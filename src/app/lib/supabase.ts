@@ -31,7 +31,7 @@ export const api = {
     }),
   updateMatch: (id: string, updates: object) =>
     sb(`matches?id=eq.${id}`, { method: 'PATCH', body: JSON.stringify(updates) }),
-  deleteAllMatches: () => sb('matches', { method: 'DELETE', prefer: '' }),
+  deleteAllMatches: () => sb('matches?id=neq.none', { method: 'DELETE', prefer: '' }),
 };
 
 /*
