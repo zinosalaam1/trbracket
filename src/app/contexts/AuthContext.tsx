@@ -16,7 +16,7 @@ export function useAuth() {
   return context;
 }
 
-const ADMIN_PASSWORD = 'tourarcade2026';
+const ADMIN_PASSWORD = 'lfgzinoln';
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isAdmin, setIsAdmin] = useState(false);
