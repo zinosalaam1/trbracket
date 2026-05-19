@@ -50,10 +50,6 @@ export function RulesPage() {
             </div>
             <div className="flex gap-3">
               <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
-              <p><strong className="text-white">Difficulty:</strong> World Class or Legendary (tournament admin decision)</p>
-            </div>
-            <div className="flex gap-3">
-              <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
               <p><strong className="text-white">Extra Time:</strong> Enabled if match is tied at full time</p>
             </div>
             <div className="flex gap-3">
