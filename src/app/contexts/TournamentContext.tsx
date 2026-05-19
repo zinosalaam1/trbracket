@@ -53,7 +53,7 @@ const SEEDED_PLAYERS = [
   'Agbabiaka Emmanuel', 'Jags', 'Emmanuel Bassey', 'Jeremiah Oluwakoya',
   'Odejimi Oluwaferanmi', 'Lord Seventh', 'Yorokobi', 'Avoseh', 'Olamide',
   'Prime', 'Akwaba', 'Joseph inioluwa', 'Obanla oluwadamilare wisdom',
-  'Omo papi', 'Abdulrasaq Jamiu Olamide', 'Big Bally', 'Zinoln',
+  'Omo papi', 'Abdulrasaq Jamiu Olamide', 'Big Bally', 'Zinoln','Tope',
 ];
 
 function buildMatch(
@@ -126,6 +126,7 @@ export function TournamentProvider({ children }: { children: React.ReactNode }) 
     // Round of 16 — last 2: bye players 19-22
     newMatches.push(buildMatch('r16-7', ps[18]?.name ?? 'TBD', ps[19]?.name ?? 'TBD', 'Round of 16', sort++));
     newMatches.push(buildMatch('r16-8', ps[20]?.name ?? 'TBD', ps[21]?.name ?? 'TBD', 'Round of 16', sort++));
+    newMatches.push(buildMatch('r16-9', ps[22]?.name ?? 'TBD', 'TBD', 'Round of 16', sort++));
     // Quarterfinals
     for (let i = 0; i < 4; i++) newMatches.push(buildMatch(`qf${i + 1}`, 'TBD', 'TBD', 'Quarterfinals', sort++));
     // Semifinals
@@ -206,7 +207,11 @@ export function TournamentProvider({ children }: { children: React.ReactNode }) 
   };
 
   const resetTournament = async () => {
-    await generateBracket();
+    await api.deleteAllMatches();
+    await api.deleteAllPlayers();
+    setMatches([]);
+    setPlayers([]);
+    await seedIfEmpty();
   };
 
   return (

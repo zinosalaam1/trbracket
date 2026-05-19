@@ -22,6 +22,7 @@ export const api = {
   getPlayers: () => sb('players?order=created_at'),
   addPlayer: (name: string) => sb('players', { method: 'POST', body: JSON.stringify({ name }) }),
   removePlayer: (id: string) => sb(`players?id=eq.${id}`, { method: 'DELETE', prefer: '' }),
+  deleteAllPlayers: () => sb('players?id=neq.none', { method: 'DELETE', prefer: '' }),
   getMatches: () => sb('matches?order=sort_order'),
   upsertMatch: (match: object) =>
     sb('matches', {
