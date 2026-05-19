@@ -53,7 +53,7 @@ const SEEDED_PLAYERS = [
   'Agbabiaka Emmanuel', 'Jags', 'Emmanuel Bassey', 'Jeremiah Oluwakoya',
   'Odejimi Oluwaferanmi', 'Lord Seventh', 'Yorokobi', 'Avoseh', 'Olamide',
   'Prime', 'Akwaba', 'Joseph inioluwa', 'Obanla oluwadamilare wisdom',
-  'Omo papi', 'Abdulrasaq Jamiu Olamide', 'Big Bally', 'Zinoln','Tope',
+  'Omo papi', 'Abdulrasaq Jamiu Olamide', 'Big Bally', 'Zinoln',
 ];
 
 function buildMatch(
