@@ -1,7 +1,7 @@
 // ─── Supabase client ───────────────────────────────────────────────────────
 // Replace these with your actual values from supabase.com → Settings → API
-export const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
-export const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+export const SUPABASE_URL = 'https://mouhgrpkcgkftysrowru.supabase.co';
+export const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1vdWhncnBrY2drZnR5c3Jvd3J1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxNzkyOTIsImV4cCI6MjA5NDc1NTI5Mn0.XqwWbNWY7hH9SC3cCLxuq5jSYhkhaYKmAFhFqJvbtys';
 
 async function sb(path: string, opts: RequestInit & { prefer?: string } = {}): Promise<any> {
   const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
