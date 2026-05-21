@@ -139,32 +139,31 @@ export function TournamentProvider({ children }: { children: React.ReactNode }) 
   };
 
   // ── Advance winner through bracket ─────────────────────────────────────
-  const advanceWinner = async (matchId: string, winner: string, snapshot: Match[]) => {
-    const updates: Array<{ id: string; field: string; value: string }> = [];
-
+const advanceWinner = async (matchId: string, winner: string, snapshot: Match[]) => {
     if (matchId.startsWith('q')) {
       const n = parseInt(matchId.substring(1));
-      updates.push({ id: `r16-${n}`, field: 'player2', value: winner });
+      await api.updateMatch(`r16-${n}`, { player2: winner });
+
     } else if (matchId.startsWith('r16-')) {
       const n = parseInt(matchId.split('-')[1]);
       const qfNum = Math.ceil(n / 2);
       const pos = n % 2 === 1 ? 'player1' : 'player2';
-      updates.push({ id: `qf${qfNum}`, field: pos, value: winner });
+      await api.updateMatch(`qf${qfNum}`, { [pos]: winner });
+
     } else if (matchId.startsWith('qf')) {
       const n = parseInt(matchId.substring(2));
       const sfNum = Math.ceil(n / 2);
       const pos = n % 2 === 1 ? 'player1' : 'player2';
-      updates.push({ id: `sf${sfNum}`, field: pos, value: winner });
+      await api.updateMatch(`sf${sfNum}`, { [pos]: winner });
+
     } else if (matchId.startsWith('sf')) {
       const n = parseInt(matchId.substring(2));
       const pos = n === 1 ? 'player1' : 'player2';
       const match = snapshot.find(m => m.id === matchId);
       const loser = match ? (match.player1 === winner ? match.player2 : match.player1) : 'TBD';
-      updates.push({ id: 'final', field: pos, value: winner });
-      updates.push({ id: 'third', field: pos, value: loser });
+      await api.updateMatch('final', { [pos]: winner });
+      await api.updateMatch('third', { [pos]: loser });
     }
-
-    for (const u of updates) await api.updateMatch(u.id, { [u.field]: u.value });
   };
 
   // ── Public actions ──────────────────────────────────────────────────────
