@@ -150,7 +150,7 @@ const advanceWinner = async (matchId: string, winner: string, snapshot: Match[])
       const pos = n % 2 === 1 ? 'player1' : 'player2';
       await api.updateMatch(`qf${qfNum}`, { [pos]: winner });
 
-    } else if (matchId.startsWith('qf')) {
+   } else if (matchId.startsWith('qf')) {
       const n = parseInt(matchId.substring(2));
       const sfNum = Math.ceil(n / 2);
       const pos = n % 2 === 1 ? 'player1' : 'player2';
